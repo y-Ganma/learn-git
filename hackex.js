@@ -49,20 +49,21 @@ console.log(evenNumbers);
 
 //(5)
 async function fetchAsync(url){
-    try{const response=await fetch(url);
+    try{
+        const response = await fetch(url);
     if(!response.ok){
         throw new Error('Network response was not ok');
     }
-    const data=await response.json();
+    const data = await response.json();
     return data;
-}catch (error){console.error('Eror fetching data',error);
+}catch (error){console.error('Error fetching data',error);
 }
 }
 
 const apiUrl='https://weather.tsukumijima.net/api/forecast/city/400040';
 
 (async() => {
-    const data=await fetchAsync(apiUrl);
+    const data = await fetchAsync(apiUrl);
     console.log('Fetched data:',data);
 })();
 //エラーが出てるので、修正する
