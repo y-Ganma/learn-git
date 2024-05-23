@@ -37,5 +37,32 @@ console.log(factorial(0));
 console.log(factorial(7));
 
 //(4)
+function filterEvenNumbers(arr,filterFn){
+    return arr.filter(filterFn)
+}
+function filterFn(value){
+    return value % 2===0;
+}
+const Enumbers=[1,2,3,4,5,6,7,8,9];
+const evenNumbers=filterEvenNumbers(Enumbers,filterFn);
+console.log(evenNumbers);
 
+//(5)
+async function fetchAsync(url){
+    try{const response=await fetch(url);
+    if(!response.ok){
+        throw new Error('Network response was not ok');
+    }
+    const data=await response.json();
+    return data;
+}catch (error){console.error('Eror fetching data',error);
+}
+}
 
+const apiUrl='https://weather.tsukumijima.net/api/forecast/city/400040';
+
+(async() => {
+    const data=await fetchAsync(apiUrl);
+    console.log('Fetched data:',data);
+})();
+//エラーが出てるので、修正する
